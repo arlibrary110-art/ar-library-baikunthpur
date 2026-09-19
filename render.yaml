@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: ar-library-management
+    runtime: docker
+    plan: free
+    healthCheckPath: /login.php
+    envVars:
+      - key: AR_LIBRARY_DB_HOST
+        sync: false
+      - key: AR_LIBRARY_DB_USER
+        sync: false
+      - key: AR_LIBRARY_DB_PASSWORD
+        sync: false
+      - key: AR_LIBRARY_DB_NAME
+        sync: false

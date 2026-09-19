@@ -1,0 +1,65 @@
+AR LIBRARY MANAGEMENT SYSTEM - RENDER DEPLOYMENT
+================================================
+
+IMPORTANT:
+Render web service app ko host karega. Is project ka database MySQL/MariaDB hai.
+Render ka normal PostgreSQL database is PHP mysqli project ke saath direct compatible nahi hai.
+Isliye MySQL/MariaDB ko kisi external provider par rakhna hoga.
+
+STEP 1 - MySQL DATABASE
+-----------------------
+1. Kisi MySQL/MariaDB hosting provider par database banayein.
+2. Database name, host, username, password aur port/SSL requirements note karein.
+3. Fresh install ke liye original package ke AR_Library_Private/database.sql ko phpMyAdmin/DB tool se import karein.
+4. Existing library data hai to database.sql ko dobara import karke data overwrite NA karein. Pehle backup lein.
+
+STEP 2 - GITHUB
+---------------
+1. Is folder ke saare files GitHub repository me upload karein.
+2. AR_Library_Private folder upload karna zaroori nahi hai; is package ke Docker build me ise public image se remove kiya jata hai.
+3. GitHub repo ko Render se connect karein.
+
+STEP 3 - RENDER
+---------------
+1. Render Dashboard -> New -> Web Service.
+2. GitHub repository select karein.
+3. Runtime: Docker.
+4. Render Dockerfile automatically use karega.
+5. Deploy karein.
+
+STEP 4 - ENVIRONMENT VARIABLES
+------------------------------
+Render -> Service -> Environment me ye 4 variables set karein:
+
+AR_LIBRARY_DB_HOST = MySQL server host
+AR_LIBRARY_DB_USER = MySQL username
+AR_LIBRARY_DB_PASSWORD = MySQL password
+AR_LIBRARY_DB_NAME = MySQL database name
+
+Example:
+AR_LIBRARY_DB_HOST=db.example.com
+AR_LIBRARY_DB_USER=ar_library_user
+AR_LIBRARY_DB_PASSWORD=YOUR_STRONG_PASSWORD
+AR_LIBRARY_DB_NAME=ar_library
+
+STEP 5 - HTTPS
+--------------
+Render HTTPS automatically provide karta hai. Public use se pehle Render URL se login/receipt/attendance test karein.
+
+STEP 6 - FIRST LOGIN
+--------------------
+Fresh database par:
+Staff ID: STF-001
+Initial Password: AR@Lib#2026!Baikunthpur
+
+First login ke baad password turant change karein.
+
+STEP 7 - ATTENDANCE QR
+----------------------
+Deployment ke baad Admin/Staff dashboard se Attendance QR open karke QR generate/display karein.
+QR current HTTPS domain ke saath use hoga.
+
+IMPORTANT LIMITATION
+--------------------
+Is package me database Render ke andar create nahi hota. MySQL/MariaDB external chahiye.
+Agar aapke paas already online MySQL database hai, sirf uske credentials Render Environment Variables me set karne hain.
