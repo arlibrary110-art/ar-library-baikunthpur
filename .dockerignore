@@ -1,8 +1,0 @@
-AR_Library_Private/
-*.sql
-*.zip
-.git/
-.gitignore
-README.txt
-LIVE_DEPLOYMENT.txt
-STAFF_ACCESS_CONTROL.txt
