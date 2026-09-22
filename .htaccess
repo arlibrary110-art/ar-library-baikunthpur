@@ -1,0 +1,6 @@
+Options -Indexes
+
+# Never expose source/config/backup files if they are accidentally uploaded here.
+<FilesMatch "\.(bak|old|orig|save|backup|sql|ini|log|env)$">
+    Require all denied
+</FilesMatch>
