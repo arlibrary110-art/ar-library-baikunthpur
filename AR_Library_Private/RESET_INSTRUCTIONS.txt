@@ -1,0 +1,21 @@
+AR LIBRARY - FRESH START RESET
+================================
+
+Admin > Settings me “Fresh Start / Reset Old Data” button diya gaya hai.
+Ye permanently remove karega:
+members, fee records, pending dues, payments, attendance, seat assignments,
+locker assignments, enquiries aur activity logs.
+
+Preserve rahenge:
+staff/admin accounts, library settings, fee settings aur expenses.
+
+Use:
+1. Admin account se Settings kholen.
+2. Fresh Start / Reset Old Data click karein.
+3. Warning confirm karein.
+4. Prompt me exactly RESET type karein.
+
+Alternative: phpMyAdmin me ar_library database select karke
+AR_Library_Private/RESET_OLD_MEMBER_DATA.sql run karein.
+
+IMPORTANT: Pehle database backup lein. Reset permanent hai.
