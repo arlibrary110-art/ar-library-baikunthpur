@@ -1,2 +1,0 @@
-# This folder must be outside the web root. This rule is only an additional safeguard.
-Require all denied
