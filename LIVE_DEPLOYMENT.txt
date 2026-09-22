@@ -1,0 +1,41 @@
+AR LIBRARY MANAGEMENT SYSTEM — LIVE DEPLOYMENT (GOOGLE SHEETS)
+===============================================================
+
+1) RUNTIME
+Use the included Dockerfile on Render. The application runtime database is Google Sheets.
+Railway/MySQL credentials are not required for normal operation.
+
+2) GOOGLE CLOUD
+- Create a Google Cloud project.
+- Enable Google Sheets API.
+- Create a service account and a JSON key.
+- Create the target Google Spreadsheet.
+- Share the spreadsheet with the service account client_email as Editor.
+
+3) RENDER ENVIRONMENT
+Set:
+  GOOGLE_SHEET_ID=<spreadsheet id>
+  GOOGLE_SERVICE_ACCOUNT_JSON=<complete service-account JSON>
+
+Never commit the JSON key to GitHub.
+
+4) FIRST ADMIN LOGIN (fresh sheet)
+Staff ID: STF-001
+Initial password: AR@Lib#2026!Baikunthpur
+Change this password immediately after first login.
+
+5) EXISTING RAILWAY DATA
+Do not delete Railway until the new deployment is tested and old data is verified in the
+Google Sheet. The optional CLI migration tool is under migration_tools/.
+It requires ENABLE_RAILWAY_MIGRATION=1 and OLD_DB_* variables. After migration, remove
+those variables. The migration tool is denied by the web server and is not part of normal
+runtime.
+
+6) TEST CHECKLIST
+Test all of the following before retiring Railway:
+Admin login, Staff login, Member add/edit, Fees/Payments, Receipt, Attendance, QR attendance,
+Seats/Lockers, Enquiry, Expenses, Reports, Backup/Restore, Settings and Member login/profile.
+
+7) SECURITY
+Use HTTPS. Keep the service-account JSON only in Render Environment Variables.
+Do not publish private keys, SQL dumps, backups or old Railway credentials.
