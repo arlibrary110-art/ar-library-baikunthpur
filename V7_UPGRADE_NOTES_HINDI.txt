@@ -1,0 +1,21 @@
+AR LIBRARY V7 UPGRADE NOTES
+
+1. Member + Initial Fee Due remains atomic in the local transaction.
+2. MongoDB request lock prevents concurrent full-snapshot writes from overwriting each other.
+3. Transaction commit now persists dirty tables before the API returns success.
+4. Rollback restores the previous dirty-table state.
+5. Staff permission helper now references ARMongoDB instead of the obsolete ARSheetsDB class name.
+6. Renewal supports 12 Months and has a safe fee fallback.
+7. Enquiry-to-member conversion now also creates the initial Pending Fee Due atomically.
+8. Fee settings now support 12-month values.
+9. Default capacity/lockers updated from the old shipped 79 to 76, without overwriting custom live values.
+10. Old shipped address is migrated only when it exactly matches the old default; custom live address is preserved.
+11. UI fallbacks no longer depend on 79 seats.
+
+IMPORTANT: Deploy this ZIP after taking a MongoDB backup. The app uses MongoDB transactions; the MongoDB deployment must support transactions (MongoDB Atlas replica set does).
+
+VALIDATION PERFORMED
+- All PHP files pass php -l syntax validation.
+- script.js passes node --check syntax validation.
+- Exact duplicate file hashes were checked; no exact duplicate files were found.
+- Dockerfile now explicitly installs sqlite3 because db.php uses SQLite3 compatibility layer.
