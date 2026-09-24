@@ -1,0 +1,28 @@
+AR LIBRARY MANAGEMENT SYSTEM - RENDER + MONGODB
+
+1. RUNTIME
+Render par Runtime = Docker rakhein. Project PHP 8.2 + Apache par chalta hai.
+
+2. DATABASE
+Application ka persistent runtime database MongoDB Atlas hai. Google Sheets ki zarurat nahi hai.
+
+3. RENDER ENVIRONMENT VARIABLES
+Ye variables add karein:
+- MONGODB_URI
+- MONGODB_DATABASE=ar_library
+
+MONGODB_URI ko GitHub me kabhi commit na karein.
+
+4. MONGODB ATLAS
+MongoDB Atlas cluster banayein, database user banayein aur Render se connection allow karein.
+Connection string ko MONGODB_URI me rakhein. Required collections application first run par create karega.
+
+5. EXISTING RAILWAY DATA
+Railway database ko delete karne se pehle existing data migrate/verify karein. One-time migration utility
+`migration_tools/migrate_railway_to_mongodb.php` hai. Ye CLI-only hai aur web se block hai. Migration ke
+liye temporary `ENABLE_RAILWAY_MIGRATION=1` aur `OLD_DB_*` variables set karein. Migration verify hone
+ke baad in variables ko remove kar dein.
+
+6. IMPORTANT
+MongoDB persistent database hai. Application existing SQL APIs ko compatibility layer ke through chalati hai,
+jisse existing features ko minimum code changes ke saath preserve kiya gaya hai.
