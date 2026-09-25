@@ -1,0 +1,8 @@
+AR Library Member App V1 UI update
+
+Updated files:
+- member_login.php — new blue/white mobile login UI using the exact AR Library logo.
+- member_app.php — new mobile Member App with Dashboard, My Seat, Attendance, My Profile, Library Rules, Contact Library; existing QR/GPS attendance preserved.
+- member_api.php — member profile API now keeps the registered phone available to the Member App profile screen.
+
+Existing backend/database files were preserved from the uploaded V3 project.

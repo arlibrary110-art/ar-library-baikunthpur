@@ -1,0 +1,9 @@
+AR Library Member App V2 fixes
+
+- Added CSRF protection to member login/logout and member attendance scan.
+- Added member-login rate limiting (5 attempts per 15 minutes per member/IP key).
+- Added a permanent signed attendance QR token; the printed office QR does not expire or auto-refresh. Server-side GPS verification is still required.
+- Added MongoDB sync file locking to prevent concurrent SQLite-to-Mongo write-back from overwriting changes on a single Render instance.
+- Added members.course to the compatibility schema so Course / Exam displays correctly.
+- Fixed security helper type checks for the MongoDB adapter.
+- Replaced the fake Forgot Member ID / Phone action with a clear contact message.
